@@ -1,0 +1,81 @@
+
+Copy
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Costo de Producción</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+  }
+  h1 {
+    text-align: center;
+  }
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    display: block;
+    width: 100%;
+  }
+  #resultado {
+    margin-top: 30px;
+    font-size: 1.2em;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Calculadora de Costo de Producción</h1>
+
+<form id="costoForm">
+  <label for="materiaPrima">Costo de Materia Prima:</label>
+  <input type="number" id="materiaPrima" required step="0.01" />
+
+  <label for="manoDeObra">Costo de Mano de Obra:</label>
+  <input type="number" id="manoDeObra" required step="0.01" />
+
+  <label for="gastosIndirectos">Gastos Indirectos:</label>
+  <input type="number" id="gastosIndirectos" required step="0.01" />
+
+  <button type="button" onclick="calcularCosto()">Calcular Costo Total</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+function calcularCosto() {
+  const materiaPrima = parseFloat(document.getElementById('materiaPrima').value);
+  const manoDeObra = parseFloat(document.getElementById('manoDeObra').value);
+  const gastosIndirectos = parseFloat(document.getElementById('gastosIndirectos').value);
+
+  if (isNaN(materiaPrima) || isNaN(manoDeObra) || isNaN(gastosIndirectos)) {
+    alert('Por favor, ingresa todos los costos.');
+    return;
+  }
+
+  const costoTotal = materiaPrima + manoDeObra + gastosIndirectos;
+
+  document.getElementById('resultado').innerText = 
+    `El costo total de producción es: $${costoTotal.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
